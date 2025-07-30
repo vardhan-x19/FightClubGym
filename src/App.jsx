@@ -1,14 +1,18 @@
 import React from 'react'
 import Home from './components/Home'
+import LandingPage from './components/LandingPage'
 import About from './components/About'
 import Trainers from './components/Trainers'
 import Facilities from './components/Facilities'
+import Manifesto from './components/Manifesto'
 
 const App = () => {
   return (
     <>
-      <Home bgImage="/fightclub.jpg" />
-      <About bgImage="/fightclub1.jpg" />
+      <LandingPage bgImage="/miketyson.jpeg" />
+      <Home />
+      <About bgImage="/fightChat.png" />
+      <Manifesto />
       <Trainers />
       <Facilities />
     </>

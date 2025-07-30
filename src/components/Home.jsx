@@ -1,32 +1,58 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 
-const Home = ({ bgImage }) => (
-  <section className="min-h-screen flex flex-col justify-center items-center relative overflow-hidden">
-    {/* Animated background image */}
-    <motion.div
-      className="absolute inset-0"
-      style={{
-        backgroundImage: `url(${bgImage})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-        zIndex: 0,
-      }}
-      initial={{ scale: 1 }}
-      animate={{ scale: 1.08 }}
-      transition={{ duration: 8, ease: "easeInOut", repeat: Infinity, repeatType: "reverse" }}
-    />
-    {/* Overlay for better text visibility */}
-    <div className="absolute inset-0  bg-opacity-60 z-10"></div>
-    <div className="relative z-20 flex flex-col items-center">
-      {/* Your Home content here */}
-      <h1 className="text-5xl md:text-6xl font-extrabold text-white mb-6 drop-shadow-lg">
-        Fight Club Gym
-      </h1>
-      <p className="text-xl md:text-2xl text-gray-200 text-center max-w-2xl">
-        Push your limits. Join the revolution.
-      </p>
+const navLinks = [
+  { name: "About", href: "#about" },
+  { name: "Trainers", href: "#trainers" },
+  { name: "Facilities", href: "#facilities" },
+  { name: "Join", href: "#join" }
+]
+
+const Home = () => (
+  <section className="min-h-screen  relative flex flex-col bg-black">
+    {/* Navbar */}
+    <nav className="flex justify-between items-center px-8 py-6 bg-black bg-opacity-80 fixed w-full z-30">
+      <span className="text-2xl font-bold text-red-600 tracking-widest">FIGHTCLUB GYM</span>
+      <ul className="flex gap-8">
+        {navLinks.map(link => (
+          <li key={link.name}>
+            <a
+              href={link.href}
+              className="text-white hover:text-red-500 transition font-semibold"
+            >
+              {link.name}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+    {/* Hero Section */}
+    <div className="flex flex-col items-center justify-center flex-1 text-center pt-32">
+      <motion.h1
+        className="text-5xl md:text-7xl font-extrabold text-white mb-6 drop-shadow-lg"
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+      >
+        Welcome to <span className="text-red-600">FightClub Gym</span>
+      </motion.h1>
+      <motion.p
+        className="text-xl md:text-2xl text-gray-200 mb-8 max-w-2xl"
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.5, duration: 1 }}
+      >
+        Unleash your potential. Train with the best. Become unstoppable.
+      </motion.p>
+      <motion.a
+        href="#join"
+        className="px-8 py-3 rounded-full bg-red-600 hover:bg-red-700 text-white font-semibold shadow-lg transition"
+        initial={{ scale: 0.8, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ delay: 1, duration: 0.5 }}
+      >
+        Join Now
+      </motion.a>
     </div>
   </section>
 )
