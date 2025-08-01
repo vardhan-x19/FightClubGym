@@ -8,7 +8,7 @@ const trainers = [
 ]
 
 const Trainers = () => (
-  <section className="min-h-screen flex flex-col items-center justify-center bg-black relative overflow-hidden">
+  <section id="trainers" className="min-h-screen flex flex-col items-center justify-center bg-black relative overflow-hidden">
     <motion.h2
       className="text-4xl md:text-5xl font-bold text-white mb-8"
       initial={{ opacity: 0, y: -40 }}

@@ -9,7 +9,7 @@ const facilities = [
 ]
 
 const Facilities = () => (
-  <section className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-gray-900 via-black to-gray-800">
+  <section id="facilities" className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-gray-900 via-black to-gray-800">
     <motion.h2
       className="text-4xl md:text-5xl font-bold text-white mb-8"
       initial={{ opacity: 0, y: -40 }}

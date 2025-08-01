@@ -1,7 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 
-const LandingPage = ({ bgImage }) => {
+const LandingPage = ({ bgImage, onEnter }) => {
+  // Trigger animation if user scrolls down
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) onEnter();
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [onEnter]);
+
   return (
     <section className="min-h-screen flex flex-col justify-center items-center relative overflow-hidden bg-black">
       {/* Animated background */}
@@ -24,21 +33,21 @@ const LandingPage = ({ bgImage }) => {
         }}
       />
 
-      {/* Gradient overlay for better contrast */}
+      {/* Gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/80 z-10" />
 
-      {/* Content */}
+      {/* Text and Button */}
       <div className="relative z-20 text-center px-4">
         <motion.h1
-          className="text-red-600 text-5xl md:text-8xl font-extrabold mb-6 tracking-wide drop-shadow-lg"
-          initial={{ opacity: 0, y: 50 }}
+          className="text-red-600 text-5xl md:text-6xl font-extrabold mb-6 tracking-wide drop-shadow-lg"
+          initial={{ opacity: 0, y: 80 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{
-            duration: 2.5,
+            duration: 3.5,
             ease: 'easeOut',
           }}
         >
-          Fight Club Gym
+          Welcome to Fight Club Gym
         </motion.h1>
 
         <motion.p
@@ -50,29 +59,15 @@ const LandingPage = ({ bgImage }) => {
           "You don't know yourself until you've been in a fight. The body achieves what the mind believes."
         </motion.p>
 
-        <motion.button
-          className="bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-8 rounded-full shadow-xl transition-all duration-300"
+        <motion.a
+          href="#home"
+          className="bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-8 rounded-full shadow-xl transition-all duration-300 inline-block"
           whileHover={{ scale: 1.08 }}
           whileTap={{ scale: 0.95 }}
-          transition={{ type: 'spring', stiffness: 200 }}
         >
           Join the Revolution
-        </motion.button>
+        </motion.a>
       </div>
-
-      {/* Subtle floating particles or motion dots for vibe (optional) */}
-      <motion.div
-        className="absolute w-3 h-3 bg-red-500 rounded-full top-1/4 left-1/3 z-10"
-        animate={{
-          y: [0, -10, 0],
-          opacity: [0.6, 1, 0.6],
-        }}
-        transition={{
-          duration: 3,
-          repeat: Infinity,
-          repeatType: 'loop',
-        }}
-      />
     </section>
   );
 };
